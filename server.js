@@ -1,28 +1,19 @@
 var express = require('express'),
     app = express();
 
-//var Parser = require('./parser');
-//var parser = new Parser();
-//parser.getAll();
+var Parser = require('./parser');
+var parser = new Parser();
 
-// Load the fs (filesystem) module.
-var fs = require('fs');
-var usersInfo;
-// Read the contents of the file into memory.
-fs.readFile('./parser/users.json', function (err, logData) {
-
-    // If an error occurred, throwing it will
-    // display the exception and kill our app.
-    if (err) throw err;
-
-    usersInfo = logData.toString();
-    console.log("textFromJSON", usersInfo);
+app.get('/violations', function (req, res) {
+    res.json(parser.getViolations());
 });
 
-//app.use(express.static(__dirname + '/public'));
+app.use('/database', function (reg, res) {
+    res.json(parser.getDatabase());
+});
 
-app.use('/users', function (req, res) {
-    res.send(usersInfo);
+app.get('/violations-from-database', function (req, res) {
+    res.json(parser.getViolationsFromDatabase());
 });
 
 app.get('/', function (req, res) {
