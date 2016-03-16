@@ -20,6 +20,8 @@ app.get('/', function (req, res) {
     res.send('New nodejs server!');
 });
 
+app.use(express.static('node_modules'));
+app.use(express.static('assets'));
 app.use(express.static('public'));
 
 app.listen(3000);

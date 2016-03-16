@@ -5,7 +5,8 @@
     "express" : "3.3.x",
     "lodash": "4.5.x",
     "bootstrap": "3.x.x",
-    "angular": "*"
+    "angular": "*",
+    "jquery": "*"
   },
   "engines": {
     "node": ">=0.10.0"

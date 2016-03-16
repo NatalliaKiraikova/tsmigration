@@ -3,36 +3,38 @@
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../node_modules/angular/angular.min.js"></script>
-    <script src="../node_modules/lodash/lodash.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="angular/angular.min.js"></script>
+    <script src="lodash/lodash.min.js"></script>
 </head>
+
 <body>
 
-<div class="container">
+<div class="container-fluid max-height-div">
 
-    <div class="row">
+    <div class="row bordered-div">
         <h1> Header area </h1>
     </div>
 
-    <div class="row">
-        <div class="col-sm-4">
-            <h3>Column 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    <div class="row max-height-div">
+        <div class="col-md-2 bordered-div max-height-div">
+            <h3>Left menu</h3>
         </div>
-        <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <div class="col-md-10">
+            <div class="row bordered-div">
+                <h3>Top Menu 3</h3>
+            </div>
+            <div class="row bordered-div max-height-div">
+                <h3>Main area</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-        </div>
+
     </div>
 </div>
 
