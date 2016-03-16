@@ -16,6 +16,10 @@ app.get('/violations-from-database', function (req, res) {
     res.json(parser.getViolationsFromDatabase());
 });
 
+app.get('/populate-violations', function (req, res) {
+    res.json(parser.populateViolationsWithDate());
+});
+
 app.get('/', function (req, res) {
     res.send('New nodejs server!');
 });

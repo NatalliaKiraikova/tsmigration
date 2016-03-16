@@ -38,4 +38,10 @@ Parser.prototype.getViolationsFromDatabase = function () {
     return utils.violationsFromDatabase(violations, database);
 };
 
+Parser.prototype.populateViolationsWithDate = function () {
+    var populatedViolations = utils.populateViolationsWithDate(violations);
+    fs.writeFile('./db/violations.json', JSON.stringify(populatedViolations));
+    return populatedViolations;
+};
+
 module.exports = Parser;

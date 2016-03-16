@@ -43,7 +43,14 @@ Utils.prototype.violationsFromDatabase = function(violations, database){
     return matchedArray;
 };
 
-Utils.prototype.generateDate = function (){
+Utils.prototype.populateViolationsWithDate = function(violations){
+    _(violations).forEach(function (violation) {
+        violation.date = generateDateInLastThreeMonths();
+    });
+    return violations;
+};
+
+function generateDateInLastThreeMonths (){
     var d = new Date();
     d.setTime(d.getTime() - getRandomArbitrary(0, threeMonthsInMsec));
     return d;
