@@ -13,3 +13,7 @@ body{
 .max-height-div {
     height: 100%;
 }
+
+.violations{
+    border: 2px solid #ee8c6f;
+}
