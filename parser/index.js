@@ -3,6 +3,8 @@ var _ = require('lodash'),
 
 var Utils = require('./utils');
 var utils = new Utils();
+var UpdateDatabaseUtils = require('./updateDatabaseUtils.js');
+var updateDatabaseUtils = new UpdateDatabaseUtils();
 
 var violations, database;
 
@@ -39,8 +41,8 @@ Parser.prototype.getViolationsFromDatabase = function () {
 };
 
 Parser.prototype.populateViolationsWithDate = function () {
-    var populatedViolations = utils.populateViolationsWithDate(violations);
-    fs.writeFile('./db/violations.json', JSON.stringify(populatedViolations));
+    var populatedViolations = updateDatabaseUtils.populateViolationsWithDate(violations);
+    fs.writeFile('./db/new_violations.json', JSON.stringify(populatedViolations));
     return populatedViolations;
 };
 
