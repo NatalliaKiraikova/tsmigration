@@ -13,8 +13,32 @@ app.use('/database', function (reg, res) {
 });
 
 app.get('/violations-from-database', function (req, res) {
-    res.json(parser.getViolationsFromDatabase());
+    res.json(parser.getAllViolationsFromDatabase());
 });
+
+//http://localhost:3000/violations-from-database-by-period/?startDate=1456402158936&endDate=1458216558936
+
+app.get('/violations-from-database-by-period/', function (req, res) {
+   //read parameters from query string
+    var startDate = req.query.startDate
+    var endDate = req.query.endDate;
+
+   /* var startDate = (new Date()).getTime();
+    var weekInMsec = 604800000;
+    var endDate = now - (weekInMsec * 3);*/
+
+    res.json(parser.getViolationsFromDatabaseByPeriod(startDate, endDate));
+});
+
+//http://localhost:3000/names-from-violations-by-period/?startDate=1456402158936&endDate=1458216558936
+app.get('/names-from-violations-by-period', function (req, res) {
+    //read parameters from query string
+    var startDate = req.query.startDate
+    var endDate = req.query.endDate;
+
+    res.json(parser.getNamesFromViolationsFromDatabaseByPeriod(startDate, endDate));
+});
+
 
 app.get('/populate-violations', function (req, res) {
     res.json(parser.populateViolationsWithDate());

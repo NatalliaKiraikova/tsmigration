@@ -36,8 +36,16 @@ Parser.prototype.getDatabase = function () {
     return database;
 };
 
-Parser.prototype.getViolationsFromDatabase = function () {
+Parser.prototype.getAllViolationsFromDatabase = function () {
     return utils.violationsFromDatabase(violations, database);
+};
+
+Parser.prototype.getViolationsFromDatabaseByPeriod = function (startDate, endDate) {
+    return utils.getViolationsFromDatabaseByPeriod(violations, database, startDate, endDate);
+};
+
+Parser.prototype.getNamesFromViolationsFromDatabaseByPeriod = function (startDate, endDate) {
+    return utils.getNamesFromViolationsFromDatabaseByPeriod(violations, database, startDate, endDate);
 };
 
 Parser.prototype.populateViolationsWithDate = function () {
