@@ -6,7 +6,7 @@
 
     /** @ngInject */
     function appConfig($routeProvider) {
-        $routeProvider.when('/violations', {
+        $routeProvider.when('/violationsview', {
             templateUrl: 'tpl/violations-table.html',
             controller: 'ViolationsCtrl'
         }).when('/database', {
