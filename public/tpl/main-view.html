@@ -1,0 +1,36 @@
+<div class="container-fluid max-height-div">
+
+    <div class="row bordered-div">
+        <h1> Header area </h1>
+    </div>
+
+    <div class="row max-height-div">
+        <div class="col-md-2 bordered-div max-height-div">
+            <h3>Left menu</h3>
+        </div>
+        <div class="col-md-10">
+
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a ui-sref='home'>Home</a></li>
+                            <li><a ui-sref='violations'>Violations</a></li>
+                            <li><a ui-sref="database">Database</a></li>
+                            <li>
+                                <a ui-sref="violations-from-database-by-period">Violations
+                                    by last 3 weeks</a></li>
+                            <li>
+                                <a ui-sref="names-from-violations-by-period">Names
+                                    From Violations by 3 weeks</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+            <div class="row max-height-div">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+</div>
