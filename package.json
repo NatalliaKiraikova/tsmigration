@@ -1,15 +1,23 @@
 {
-  "name" : "MyStaticServer",
-  "version" : "0.0.1",
-  "dependencies" : {
-    "express" : "3.3.x",
+  "name": "MyStaticServer",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "3.3.x",
     "lodash": "4.5.x",
     "bootstrap": "3.x.x",
     "angular": "*",
-    "angular-ui-router":"*",
+    "angular-ui-router": "*",
     "jquery": "*"
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0"
   }
 }

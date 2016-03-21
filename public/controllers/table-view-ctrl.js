@@ -10,7 +10,7 @@
             $scope.columns = getColumnsArrayFromObject(items.data[0]);
         }
         $scope.items = items.data;
-    };
+    }
 
     function getColumnsArrayFromObject(object) {
         var columnArray = [];
