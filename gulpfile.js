@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var gutil = require('gulp-util');
 var jshint = require('gulp-jshint');
 var sass   = require('gulp-sass');
 
@@ -7,7 +6,7 @@ var sass   = require('gulp-sass');
 gulp.task('default', ['watch', 'jshint', 'build-css']);
 
 gulp.task('build-css', function() {
-    return gulp.src('assets/partials/**/*.scss')
+    return gulp.src('assets/partials/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('assets/css/'));
 });
