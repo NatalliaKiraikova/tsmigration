@@ -10,3 +10,8 @@ thead {
   font-weight: bold;
   text-align: center;
 }
+
+caption {
+  font-size: 1.3em;
+  @extend thead
+}
