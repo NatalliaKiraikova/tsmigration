@@ -64,6 +64,24 @@ Utils.prototype.getNamesFromViolationsFromDatabaseByPeriod = function (violation
     return matchedArray;
 };
 
+Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str){
+    var matchedArr = [];
+    //_.isMatch
+    //_.isMatchWith
+    //_.partition
+    _(database).forEach(function (item) {
+        if(isSubstr(item.name, str)) {
+            matchedArr.push(item);
+        }
+    }
+
+    return matchedArr;
+};
+
+function isSubstr(string, key){
+    return true; //(string && _.contain() )
+}
+
 function isInSelectedPeriod(vDate, startDate, endDate) {
     var violationDateInTime = (new Date(vDate).getTime());
     return (startDate <= violationDateInTime && violationDateInTime <= endDate);

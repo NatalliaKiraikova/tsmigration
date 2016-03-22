@@ -15,6 +15,12 @@ app.use('/database', function (reg, res) {
 app.get('/violations-from-database', function (req, res) {
     res.json(parser.getAllViolationsFromDatabase());
 });
+//http://localhost:3000/suggestions-from-database-by-str/?str='a'
+app.get('/suggestions-from-database-by-str', function (req, res) {
+    var str = req.query.str;
+    res.json(parser.getSuggestionsFromDatabaseByStr(str));
+});
+
 
 //http://localhost:3000/violations-from-database-by-period/?startDate=1456402158936&endDate=1458216558936
 
@@ -38,7 +44,6 @@ app.get('/names-from-violations-by-period', function (req, res) {
 
     res.json(parser.getNamesFromViolationsFromDatabaseByPeriod(startDate, endDate));
 });
-
 
 app.get('/populate-violations', function (req, res) {
     res.json(parser.populateViolationsWithDate());
