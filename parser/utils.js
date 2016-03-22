@@ -66,11 +66,9 @@ Utils.prototype.getNamesFromViolationsFromDatabaseByPeriod = function (violation
 
 Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
     var matchedArr = [];
-    //_.isMatch
-    //_.isMatchWith
-    //_.partition
+
     _(database).forEach(function (item) {
-        if (isSubstr(item.name, str)) {
+        if (_.includes(item.name, str) || isSubstrInCarsArray(item.cars, str)) {
             matchedArr.push(item);
         }
     });
@@ -78,8 +76,10 @@ Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
     return matchedArr;
 };
 
-function isSubstr(string, key) {
-    return string && _.includes(string, key);
+function isSubstrInCarsArray(cars, str) {
+    return _.find(cars, function (car) {
+        return _.includes(car.name, str)
+    });
 }
 
 function isInSelectedPeriod(vDate, startDate, endDate) {
