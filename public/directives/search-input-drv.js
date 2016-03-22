@@ -35,10 +35,6 @@
                 $scope.suggestions = res.data;
             });
         };
-
-        $scope.listClick = function(item){
-            alert("Hello! I am an " + item + "!!");
-        };
     }
 
 })();

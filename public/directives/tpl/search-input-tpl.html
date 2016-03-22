@@ -4,8 +4,4 @@
         <button ng-click="search()" class="btn btn-secondary" type="button">Search</button>
       </span>
 </div>
-<ul class="list-group">
-    <li ng-repeat="sg in suggestions" ng-click="listClick(sg)" class="list-group-item">
-        {{sg}}
-    </li>
-</ul>
+<suggestions-list></suggestions-list>
