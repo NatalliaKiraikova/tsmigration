@@ -78,7 +78,7 @@ Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
 
 function isSubstrInCarsArray(cars, str) {
     return _.find(cars, function (car) {
-        return _.includes(car.name, str)
+        return _.includes(car.name, str);
     });
 }
 
