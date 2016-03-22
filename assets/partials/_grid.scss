@@ -12,6 +12,6 @@ thead {
 }
 
 caption {
+  @extend thead;
   font-size: 1.3em;
-  @extend thead
 }

@@ -14,7 +14,8 @@ function generateDateInLastThreeMonths (){
     var d = new Date();
     d.setTime(d.getTime() - getRandomArbitrary(0, threeMonthsInMsec));
     return d;
-};
+}
+
 var threeMonthsInMsec = 7889238000;
 
 function getRandomArbitrary(min, max) {

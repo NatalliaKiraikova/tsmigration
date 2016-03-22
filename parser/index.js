@@ -42,7 +42,7 @@ Parser.prototype.getAllViolationsFromDatabase = function () {
 
 Parser.prototype.getSuggestionsFromDatabaseByStr = function(str) {
     return utils.getSuggestionsFromDatabaseByStr(database, str);
-}
+};
 
 Parser.prototype.getViolationsFromDatabaseByPeriod = function (startDate, endDate) {
     return utils.getViolationsFromDatabaseByPeriod(violations, database, startDate, endDate);

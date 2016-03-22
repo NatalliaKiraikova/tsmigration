@@ -3,7 +3,7 @@ var _ = require('lodash');
 var Utils = function () {
 };
 
-Utils.prototype.oldViolationsFromDatabase = function(violations, database){
+Utils.prototype.oldViolationsFromDatabase = function (violations, database) {
     //create sorted numbers array form database
     var numbers = _.map(database, function (o) {
         return _.map(o.cars, 'number');
@@ -64,22 +64,22 @@ Utils.prototype.getNamesFromViolationsFromDatabaseByPeriod = function (violation
     return matchedArray;
 };
 
-Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str){
+Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
     var matchedArr = [];
     //_.isMatch
     //_.isMatchWith
     //_.partition
     _(database).forEach(function (item) {
-        if(isSubstr(item.name, str)) {
+        if (isSubstr(item.name, str)) {
             matchedArr.push(item);
         }
-    }
+    });
 
     return matchedArr;
 };
 
-function isSubstr(string, key){
-    return true; //(string && _.contain() )
+function isSubstr(string, key) {
+    return string && _.includes(string, key);
 }
 
 function isInSelectedPeriod(vDate, startDate, endDate) {
