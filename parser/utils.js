@@ -68,9 +68,14 @@ Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
     var matchedArr = [];
 
     _(database).forEach(function (item) {
-        if (_.includes(item.name, str) || isSubstrInCarsArray(item.cars, str)) {
-            matchedArr.push(item);
+        if (_.includes(item.name, str) && !_.includes(matchedArr, item.name)) {
+            matchedArr.push(item.name);
         }
+        _(item.cars).forEach(function (car) {
+            if (_.includes(car.name, str) && !_.includes(matchedArr, car.name)){
+                matchedArr.push(car.name);
+            }
+        });
     });
 
     return matchedArr;

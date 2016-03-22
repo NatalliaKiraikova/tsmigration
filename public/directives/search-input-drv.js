@@ -17,8 +17,8 @@
 
         $scope.search = function () {
             SuggestionsService.getSuggestions($scope.searchStr).then(function (res) {
-                //TODO works only for test on Database view, using $scope from parent
-                $scope.items = res.data;
+                //TODO works only for test
+                $scope.suggestions = res.data;
             });
         };
     }
