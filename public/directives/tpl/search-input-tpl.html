@@ -1,7 +1,11 @@
 <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search for..." ng-model="searchStr">
+    <input type="text"
+           class="form-control"
+           placeholder="Search for..."
+           ng-model="searchStr">
       <span class="input-group-btn">
-        <button ng-click="search()" class="btn btn-secondary" type="button">Search</button>
+        <button id="menu-target" ng-click="search()" class="btn btn-secondary" type="button">Search</button>
       </span>
 </div>
+
 <suggestions-list></suggestions-list>

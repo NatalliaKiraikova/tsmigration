@@ -1,5 +1,7 @@
-<ul class="list-group">
-    <li ng-repeat="sg in suggestions" ng-click="listClick(sg)" class="list-group-item">
-        {{sg}}
-    </li>
-</ul>
+<div uib-dropdown is-open="status.isopen">
+    <ul class="list-group" uib-dropdown-menu role="menu" aria-labelledby="menu-target">
+        <li ng-repeat="sg in suggestions" role="menuitem" ng-click="listClick(sg)" class="list-group-item">
+            {{sg}}
+        </li>
+    </ul>
+</div>
