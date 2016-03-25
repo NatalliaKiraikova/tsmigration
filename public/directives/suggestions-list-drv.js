@@ -7,9 +7,11 @@
             return {
                 restrict: 'A',
                 require: 'searchInput',
+                //transclude: true,
                 controller: SuggestionsListDirectiveController,
                 compile: function (element, attrs, transclude) {
                     var template = "<div uib-dropdown is-open='status.isopen'><ul class='list-group' uib-dropdown-menu role='menu'><li ng-repeat='sg in suggestions' role='menuitem' ng-click='listClick(sg)' class='list-group-item'>" + "{{sg}}</li></ul></div>";
+                    //aria-labelledby='menu-target'
                     var linkFn = $compile(template);
 
                     return {
