@@ -3,17 +3,32 @@
 
     angular
         .module('app')
-        .directive('suggestionsList', function () {
+        .directive('suggestionsList', function ($compile) {
             return {
-                restrict: 'E',
-                templateUrl: "directives/tpl/suggestions-list-tpl.html",
-                scope: {
-                    labelledby: "@",
-                    searchStr: "="
-                },
-                controller: SuggestionsListDirectiveController
+                restrict: 'A',
+                require: 'searchInput',
+                controller: SuggestionsListDirectiveController,
+                compile: function (element, attrs, transclude) {
+                    var template = "<div uib-dropdown is-open='status.isopen'><ul class='list-group' uib-dropdown-menu role='menu'><li ng-repeat='sg in suggestions' role='menuitem' ng-click='listClick(sg)' class='list-group-item'>" + "{{sg}}</li></ul></div>";
+                    var linkFn = $compile(template);
+
+                    return {
+                        post: function postLink(scope, element, attrs, searchInputCtrl) {
+                            var el = linkFn(scope);
+                            element.children(":first").append(el);
+
+                            scope.$watch(function () {
+                                return searchInputCtrl.getSearchStr();
+                            }, function (newValue, oldValue) {
+                                scope.searchStr = newValue;
+                            });
+
+                        }
+                    };
+                }
             };
         });
+
     /** @ngInject */
     function SuggestionsListDirectiveController($scope, SuggestionsService) {
 
@@ -42,5 +57,5 @@
             alert("Hello! I am an " + item + "!!");
         };
     }
-
-})();
+})
+();
