@@ -20,6 +20,12 @@
             SearchStringService.setSearchString($scope.searchStr);
         };
 
+        $scope.$watch(function () {
+            return SearchStringService.getSuggestedSearchString();
+        }, function (newValue) {
+            $scope.searchStr = newValue;
+        });
+
         $scope.search = function () {
             //TODO works only for test
         };

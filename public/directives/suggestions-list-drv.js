@@ -42,7 +42,7 @@
                             });
 
                             scope.listClick = function (item) {
-                                alert("Hello! I am an " + item + "!!");
+                                SearchStringService.setSuggestedSearchString(item);
                             };
                         }
                     };
