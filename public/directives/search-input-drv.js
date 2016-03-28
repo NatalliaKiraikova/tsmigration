@@ -13,8 +13,12 @@
         });
 
     /** @ngInject */
-    function SearchInputDirectiveController($scope) {
+    function SearchInputDirectiveController($scope, SearchStringService) {
         $scope.searchStr = '';
+
+        $scope.searchStringChanged = function(){
+            SearchStringService.setSearchString($scope.searchStr);
+        };
 
         this.getSearchStr = function () {
             return $scope.searchStr;
