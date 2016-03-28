@@ -16,12 +16,8 @@
     function SearchInputDirectiveController($scope, SearchStringService) {
         $scope.searchStr = '';
 
-        $scope.searchStringChanged = function(){
+        $scope.searchStringChanged = function () {
             SearchStringService.setSearchString($scope.searchStr);
-        };
-
-        this.getSearchStr = function () {
-            return $scope.searchStr;
         };
 
         $scope.search = function () {
