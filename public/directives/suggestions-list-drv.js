@@ -16,16 +16,16 @@
                             scope.status = {
                                 isopen: false
                             };
+                            var templateAdded;
 
                             scope.$watch(function () {
-                                return SearchStringService.getSearchString();
+                                return SearchStringService.searchString;
                             }, function (newValue) {
                                 if (newValue && newValue.length > 2) {
-                                    if (!scope.inputTarget) {
-                                        scope.inputTarget = angular.element(document.querySelector('.input-group'));
+                                    if (!templateAdded) {
                                         var el = linkFn(scope);
                                         element.append(el);
-
+                                        templateAdded = true;
                                     }
                                     SuggestionsService.getSuggestions(newValue).then(function (res) {
                                         scope.suggestions = res.data;
@@ -42,7 +42,7 @@
                             });
 
                             scope.listClick = function (item) {
-                                SearchStringService.setSuggestedSearchString(item);
+                                SearchStringService.searchString = item;
                             };
                         }
                     };
