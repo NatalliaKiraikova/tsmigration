@@ -17,19 +17,19 @@
             templateUrl: 'tpl/table-view.html',
             controller: 'TableViewController',
             resolve: {
-                items: function ($http) {
-                    return $http({method: 'GET', url: 'http://localhost:3000/violations'});
+                items: function (ViolationsService) {
+                    return ViolationsService.getAllViolations();
                 }
             },
             pageTitle: 'Violations Page'
         }).state('database', {
                 parent: 'home',
                 url: '/database',
-                templateUrl: 'tpl/table-view.html',
-                controller: 'TableViewController',
+                templateUrl: 'tpl/database-table-view.html',
+                controller: 'DatabaseTableViewController',
                 resolve: {
-                    items: function ($http) {
-                        return $http({method: 'GET', url: 'http://localhost:3000/database'});
+                    items: function (DatabaseService) {
+                        return DatabaseService.getAllDatabaseItems();
                     }
                 },
                 pageTitle: 'Database Page'

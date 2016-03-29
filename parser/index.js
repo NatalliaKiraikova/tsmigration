@@ -40,6 +40,10 @@ Parser.prototype.getAllViolationsFromDatabase = function () {
     return utils.violationsFromDatabase(violations, database);
 };
 
+Parser.prototype.getDatabaseItemsBySubstring = function (str) {
+    return utils.getDatabaseItemsBySubstring(database, str);
+};
+
 Parser.prototype.getSuggestionsFromDatabaseByStr = function(str) {
     return utils.getSuggestionsFromDatabaseByStr(database, str);
 };

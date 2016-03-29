@@ -64,6 +64,17 @@ Utils.prototype.getNamesFromViolationsFromDatabaseByPeriod = function (violation
     return matchedArray;
 };
 
+Utils.prototype.getDatabaseItemsBySubstring = function (database, str) {
+    //search by 3 fields: name, cars name and cars number
+    var matchedArr = [];
+    _(database).forEach(function (item) {
+        if (_.includes(item.name, str) || isSubstrInCarsArray(item.cars, str)) {
+            matchedArr.push(item);
+        }
+    });
+    return matchedArr;
+};
+
 Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
     var matchedArr = [];
 
@@ -72,7 +83,7 @@ Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
             matchedArr.push(item.name);
         }
         _(item.cars).forEach(function (car) {
-            if (_.includes(car.name, str) && !_.includes(matchedArr, car.name)){
+            if (_.includes(car.name, str) && !_.includes(matchedArr, car.name)) {
                 matchedArr.push(car.name);
             }
         });
@@ -83,7 +94,7 @@ Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
 
 function isSubstrInCarsArray(cars, str) {
     return _.find(cars, function (car) {
-        return _.includes(car.name, str);
+        return _.includes(car.name, str) || _.includes(String(car.number), str);
     });
 }
 

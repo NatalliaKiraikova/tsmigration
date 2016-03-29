@@ -1,0 +1,17 @@
+<table>
+    <caption>
+        Table with data
+    </caption>
+    <thead>
+    <td>#</td>
+    <td ng-repeat="column in columns">
+        {{column}}
+    </td>
+    </thead>
+    <tr ng-repeat="item in items">
+        <td>{{ $index + 1 }}</td>
+        <td ng-repeat="column in columns">
+            {{item[column]}}
+        </td>
+    </tr>
+</table>

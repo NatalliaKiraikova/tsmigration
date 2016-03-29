@@ -6,7 +6,9 @@
         .directive('searchInput', function () {
             return {
                 restrict: 'E',
-                scope: {},
+                scope: {
+                    searchFn: '&'
+                },
                 templateUrl: "directives/tpl/search-input-tpl.html",
                 controller: SearchInputDirectiveController
             };
@@ -17,7 +19,7 @@
         $scope.srv = SearchStringService;
 
         $scope.search = function () {
-            //TODO works only for test
+            $scope.searchFn({searchStr: $scope.srv.searchString});
         };
     }
 

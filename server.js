@@ -8,6 +8,11 @@ app.get('/violations', function (req, res) {
     res.json(parser.getViolations());
 });
 
+app.get('/database/items-by-substring', function (req, res) {
+    var str = req.query.str;
+    res.json(parser.getDatabaseItemsBySubstring(str));
+});
+
 app.use('/database', function (reg, res) {
     res.json(parser.getDatabase());
 });
