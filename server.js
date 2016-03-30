@@ -20,13 +20,13 @@ app.use('/database', function (reg, res) {
 app.get('/violations-from-database', function (req, res) {
     res.json(parser.getAllViolationsFromDatabase());
 });
-//http://localhost:3000/suggestions-from-database-by-str/?str='a'
+//http://localhost:3000/suggestions-from-database-by-str/?str=a
 app.get('/suggestions-from-database-by-str', function (req, res) {
     var str = req.query.str;
     res.json(parser.getSuggestionsStringFromDatabaseByStr(str));
 });
 
-//http://localhost:3000/suggestions-object-from-database-by-str/?str='des'
+//http://localhost:3000/suggestions-object-from-database-by-str/?str=des
 app.get('/suggestions-object-from-database-by-str', function (req, res) {
     var str = req.query.str;
     res.json(parser.getSuggestionsObjectFromDatabaseByStr(str));

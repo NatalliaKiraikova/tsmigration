@@ -98,12 +98,12 @@ Utils.prototype.getSuggestionsObjectFromDatabaseByStr = function (database, str)
 
     _(database).forEach(function (item) {
         if (_.includes(item.name, str) && !matched[item.name]) {
-            matched[item.name] = {name: item.name};
+            matched[item.name] = {type: 'user', value: item.name};
         }
 
         _(item.cars).forEach(function (car) {
             if (_.includes(car.name, str) && !matched[car.name]) {
-                matched[car.name] = {car: car.name};
+                matched[car.name] = {type: 'car', value: car.name};
             }
         });
     });

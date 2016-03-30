@@ -7,7 +7,7 @@
             this.getSuggestions = function (searchString) {
                 var req = {
                     method: 'GET',
-                    url: 'http://localhost:3000/suggestions-from-database-by-str',
+                    url: 'http://localhost:3000/suggestions-object-from-database-by-str',
                     params: {
                         str: searchString
                     }

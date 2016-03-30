@@ -8,7 +8,7 @@
                 restrict: 'E',
                 scope: {},
                 compile: function () {
-                    var template = "<div uib-dropdown is-open='status.isopen'><ul class='list-group' uib-dropdown-menu role='menu'><li ng-repeat='sg in suggestions' role='menuitem' ng-click='listClick(sg)' class='list-group-item'>" + "{{sg}}</li></ul></div>";
+                    var template = "<div uib-dropdown is-open='status.isopen'><ul class='list-group' uib-dropdown-menu role='menu'><li ng-repeat='sg in suggestions' role='menuitem' ng-click='listClick(sg)' class='list-group-item'><suggestion-item suggestion='sg'></suggestion-item></li></ul></div>";
                     var linkFn = $compile(template);
 
                     return {
@@ -42,7 +42,7 @@
                             });
 
                             scope.listClick = function (item) {
-                                SearchStringService.searchString = item;
+                                SearchStringService.searchString = item.value;
                             };
                         }
                     };
