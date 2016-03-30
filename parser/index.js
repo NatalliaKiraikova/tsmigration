@@ -44,8 +44,12 @@ Parser.prototype.getDatabaseItemsBySubstring = function (str) {
     return utils.getDatabaseItemsBySubstring(database, str);
 };
 
-Parser.prototype.getSuggestionsFromDatabaseByStr = function(str) {
-    return utils.getSuggestionsFromDatabaseByStr(database, str);
+Parser.prototype.getSuggestionsStringFromDatabaseByStr = function(str) {
+    return utils.getSuggestionsStringFromDatabaseByStr(database, str);
+};
+
+Parser.prototype.getSuggestionsObjectFromDatabaseByStr = function (str){
+    return utils.getSuggestionsObjectFromDatabaseByStr(database, str);
 };
 
 Parser.prototype.getViolationsFromDatabaseByPeriod = function (startDate, endDate) {

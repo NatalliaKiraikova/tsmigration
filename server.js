@@ -23,9 +23,14 @@ app.get('/violations-from-database', function (req, res) {
 //http://localhost:3000/suggestions-from-database-by-str/?str='a'
 app.get('/suggestions-from-database-by-str', function (req, res) {
     var str = req.query.str;
-    res.json(parser.getSuggestionsFromDatabaseByStr(str));
+    res.json(parser.getSuggestionsStringFromDatabaseByStr(str));
 });
 
+//http://localhost:3000/suggestions-object-from-database-by-str/?str='des'
+app.get('/suggestions-object-from-database-by-str', function (req, res) {
+    var str = req.query.str;
+    res.json(parser.getSuggestionsObjectFromDatabaseByStr(str));
+});
 
 //http://localhost:3000/violations-from-database-by-period/?startDate=1456402158936&endDate=1458216558936
 

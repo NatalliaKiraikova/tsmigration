@@ -75,21 +75,40 @@ Utils.prototype.getDatabaseItemsBySubstring = function (database, str) {
     return matchedArr;
 };
 
-Utils.prototype.getSuggestionsFromDatabaseByStr = function (database, str) {
-    var matchedArr = [];
+Utils.prototype.getSuggestionsStringFromDatabaseByStr = function (database, str) {
+    var matched = {};
 
     _(database).forEach(function (item) {
-        if (_.includes(item.name, str) && !_.includes(matchedArr, item.name)) {
-            matchedArr.push(item.name);
+        if (_.includes(item.name, str) && !matched[item.name]) {
+            matched[item.name] = item.name;
         }
+
         _(item.cars).forEach(function (car) {
-            if (_.includes(car.name, str) && !_.includes(matchedArr, car.name)) {
-                matchedArr.push(car.name);
+            if (_.includes(car.name, str) && !matched[car.name]) {
+                matched[car.name] = car.name;
             }
         });
     });
 
-    return matchedArr;
+    return _.keys(matched);
+};
+
+Utils.prototype.getSuggestionsObjectFromDatabaseByStr = function (database, str) {
+    var matched = {};
+
+    _(database).forEach(function (item) {
+        if (_.includes(item.name, str) && !matched[item.name]) {
+            matched[item.name] = {name: item.name};
+        }
+
+        _(item.cars).forEach(function (car) {
+            if (_.includes(car.name, str) && !matched[car.name]) {
+                matched[car.name] = {car: car.name};
+            }
+        });
+    });
+
+    return _.values(matched);
 };
 
 function isSubstrInCarsArray(cars, str) {
