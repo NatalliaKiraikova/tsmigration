@@ -6,7 +6,7 @@
         .directive('suggestionItem', function () {
             return {
                 restrict: 'E',
-                template: "<span ng-class='getClass(suggestion.type)'></span>  {{suggestion.value}}",
+                template: "<span ng-class='getClass(suggestion)'></span>  {{suggestion.value}}",
                 scope: {
                     suggestion: '='
                 },
@@ -17,11 +17,22 @@
             function SuggestionsListDirectiveController($scope) {
                 var iconMap = {
                     user: 'user',
-                    car: 'heart'
+                    car: 'heart',
+                    vw: 'random',
+                    mercedes: 'thumbs-up',
+                    bmw: 'fire',
+                    honda: 'plane'
                 };
 
-                $scope.getClass = function (iconType) {
-                    var classString = 'glyphicon glyphicon-' + iconMap[iconType];
+                $scope.getClass = function (suggestion) {
+                    var classString = 'glyphicon glyphicon-';
+
+                    if(suggestion.type == 'car'){
+                        classString += iconMap[suggestion.value];
+                    }else{
+                        classString += iconMap[suggestion.type];
+                    }
+
                     return classString;
                 };
             }
