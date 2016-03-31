@@ -1,6 +1,13 @@
 <div class="input-group">
+    <span class="input-group-btn" id="tag-items-span">
+        <tag-item ng-repeat="tag in tagsArray"
+                  label="tag"
+                  item-click-handler='tagClickHandler(tag)'
+                  close-item-handler='tagCloseHandler(tag)'>
+        </tag-item>
+    </span>
     <input type="text"
-           class="form-control"
+           class="form-control search-text-input"
            placeholder="Search for..."
            ng-model="srv.searchString">
       <span class="input-group-btn">

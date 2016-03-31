@@ -5,7 +5,8 @@
         .module('app')
         .factory('SearchStringService', function () {
             return {
-                searchString: ''
+                searchString: '',
+                selectedSuggestion: ''
             };
         });
 })();
