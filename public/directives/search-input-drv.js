@@ -19,8 +19,8 @@
                     $scope.$watch(function () {
                         return SearchStringService.selectedSuggestion;
                     }, function (newValue) {
-                        var searchValue = newValue.value;
-                        if (newValue && searchValue.length) {
+                        if (newValue && newValue.value && newValue.value.length) {
+                            var searchValue = newValue.value;
                             $scope.tagsArray.push(searchValue);
                             if (newValue.type == 'car') {
                                 $scope.searchByCarType({carType: searchValue});

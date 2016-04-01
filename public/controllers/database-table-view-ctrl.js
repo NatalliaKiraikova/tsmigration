@@ -5,8 +5,14 @@
         .controller('DatabaseTableViewController', DatabaseTableViewController);
 
     /** @ngInject */
-    function DatabaseTableViewController($scope, items, DatabaseService) {
+    function DatabaseTableViewController($scope, items, DatabaseService, SearchStringService) {
         $scope.items = items.data;
+
+        //clear SearchStringService
+        SearchStringService.searchString = '';
+        SearchStringService.selectedSuggestion = {};
+
+        var searchResultsMap = {};
 
         $scope.searchBySubstring = function (searchString) {
             DatabaseService.getDatabaseItemsBySubstring(searchString).then(function (res) {
@@ -17,10 +23,23 @@
             });
         };
 
+        $scope.filterBySubstring = function (searchString) {
+            //TODO filter $scope.items
+        };
+
         $scope.searchByCarType = function (carType) {
+            if (searchResultsMap[carType]) {
+                //this carType was processed earlier
+                return;
+            }
+
             DatabaseService.getDatabaseItemsByCarType(carType).then(function (res) {
-                //TODO process several carTypes searches
-                $scope.items = res.data;
+                searchResultsMap[carType] = res.data;
+                var concatedResult = [];
+                _.forIn(searchResultsMap, function (value) {
+                    concatedResult = _.concat(concatedResult, value);
+                });
+                $scope.items = _.uniqBy(concatedResult, 'guid');
             });
         }
     }
