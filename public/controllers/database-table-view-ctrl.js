@@ -16,5 +16,12 @@
                 $scope.items = [];
             });
         };
+
+        $scope.searchByCarType = function (carType) {
+            DatabaseService.getDatabaseItemsByCarType(carType).then(function (res) {
+                //TODO process several carTypes searches
+                $scope.items = res.data;
+            });
+        }
     }
 })();

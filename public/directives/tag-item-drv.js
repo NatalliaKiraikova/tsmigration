@@ -25,7 +25,7 @@
         };
 
         $scope.onItemClick = function () {
-            $scope.itemClickHandler({tag: $scope.label});
+            //$scope.itemClickHandler({tag: $scope.label});
         };
     }
 })();

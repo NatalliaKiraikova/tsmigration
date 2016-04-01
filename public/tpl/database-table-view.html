@@ -1,7 +1,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-10">
-            <search-input search-fn="searchBySubstring(searchStr)"></search-input>
+            <search-input search-fn="searchBySubstring(searchStr)"
+                          search-by-car-type="searchByCarType(carType)">
+            </search-input>
             <suggestions-list></suggestions-list>
             <simple-table items="items"></simple-table>
         </div>

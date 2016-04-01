@@ -43,7 +43,7 @@
 
                             scope.listClick = function (item) {
                                 SearchStringService.searchString = item.value;
-                                SearchStringService.selectedSuggestion = item.value;
+                                SearchStringService.selectedSuggestion = item;
                             };
                         }
                     };

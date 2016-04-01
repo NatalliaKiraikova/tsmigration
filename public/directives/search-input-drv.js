@@ -7,7 +7,8 @@
             return {
                 restrict: 'E',
                 scope: {
-                    searchFn: '&'
+                    searchFn: '&',
+                    searchByCarType: '&'
                 },
                 templateUrl: "directives/tpl/search-input-tpl.html",
                 link: function ($scope) {
@@ -18,15 +19,14 @@
                     $scope.$watch(function () {
                         return SearchStringService.selectedSuggestion;
                     }, function (newValue) {
-                        if (newValue && newValue.length) {
-                            $scope.tagsArray.push(newValue);
+                        var searchValue = newValue.value;
+                        if (newValue && searchValue.length) {
+                            $scope.tagsArray.push(searchValue);
+                            if (newValue.type == 'car') {
+                                $scope.searchByCarType({carType: searchValue});
+                            }
                         }
                     });
-
-                    $scope.tagClickHandler = function (tag) {
-                        //todo process search
-                        $window.alert('item ' + tag);
-                    };
 
                     $scope.tagCloseHandler = function (tag) {
                         var index = $scope.tagsArray.indexOf(tag);
