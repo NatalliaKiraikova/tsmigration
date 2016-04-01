@@ -44,11 +44,15 @@ Parser.prototype.getDatabaseItemsBySubstring = function (str) {
     return utils.getDatabaseItemsBySubstring(database, str);
 };
 
-Parser.prototype.getSuggestionsStringFromDatabaseByStr = function(str) {
+Parser.prototype.getDatabaseItemsByCarType = function (carType) {
+    return utils.getDatabaseItemsByCarType(database, carType);
+};
+
+Parser.prototype.getSuggestionsStringFromDatabaseByStr = function (str) {
     return utils.getSuggestionsStringFromDatabaseByStr(database, str);
 };
 
-Parser.prototype.getSuggestionsObjectFromDatabaseByStr = function (str){
+Parser.prototype.getSuggestionsObjectFromDatabaseByStr = function (str) {
     return utils.getSuggestionsObjectFromDatabaseByStr(database, str);
 };
 

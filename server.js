@@ -9,8 +9,13 @@ app.get('/violations', function (req, res) {
 });
 
 app.get('/database/items-by-substring', function (req, res) {
-    var str = req.query.str;
+    var str = req.query.carType;
     res.json(parser.getDatabaseItemsBySubstring(str));
+});
+//localhost:3000/database/items-by-car-type/?carType=bmw
+app.get('/database/items-by-car-type', function (req, res) {
+    var carType = req.query.carType;
+    res.json(parser.getDatabaseItemsByCarType(carType));
 });
 
 app.use('/database', function (reg, res) {
@@ -35,13 +40,13 @@ app.get('/suggestions-object-from-database-by-str', function (req, res) {
 //http://localhost:3000/violations-from-database-by-period/?startDate=1456402158936&endDate=1458216558936
 
 app.get('/violations-from-database-by-period/', function (req, res) {
-   //read parameters from query string
+    //read parameters from query string
     var startDate = req.query.startDate
     var endDate = req.query.endDate;
 
-   /* var startDate = (new Date()).getTime();
-    var weekInMsec = 604800000;
-    var endDate = now - (weekInMsec * 3);*/
+    /* var startDate = (new Date()).getTime();
+     var weekInMsec = 604800000;
+     var endDate = now - (weekInMsec * 3);*/
 
     res.json(parser.getViolationsFromDatabaseByPeriod(startDate, endDate));
 });

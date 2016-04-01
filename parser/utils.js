@@ -64,6 +64,19 @@ Utils.prototype.getNamesFromViolationsFromDatabaseByPeriod = function (violation
     return matchedArray;
 };
 
+Utils.prototype.getDatabaseItemsByCarType = function (database, carType) {
+    var matched = [];
+    _(database).forEach(function (item) {
+        if (_.find(item.cars, function (car) {
+                return car.name === carType;
+            })) {
+            matched.push(item);
+        }
+    });
+
+    return matched;
+};
+
 Utils.prototype.getDatabaseItemsBySubstring = function (database, str) {
     //search by 3 fields: name, cars name and cars number
     var matchedArr = [];

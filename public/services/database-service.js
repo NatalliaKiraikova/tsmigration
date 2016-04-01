@@ -27,6 +27,17 @@
                 return $http(req);
             };
 
+            this.getDatabaseItemsByCarType = function (carType) {
+                var req = {
+                    method: 'GET',
+                    url: generalURL + '/items-by-car-type',
+                    params: {
+                        carType: carType
+                    }
+                };
+                return $http(req);
+            };
+
         });
 
 })();
