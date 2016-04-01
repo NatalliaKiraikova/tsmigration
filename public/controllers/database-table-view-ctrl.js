@@ -13,18 +13,23 @@
         SearchStringService.selectedSuggestion = {};
 
         var searchResultsMap = {};
+        var filterByString = '';
 
-        $scope.searchBySubstring = function (searchString) {
+        /*$scope.searchBySubstring = function (searchString) {
             DatabaseService.getDatabaseItemsBySubstring(searchString).then(function (res) {
                 $scope.items = res.data;
             }, function (reason) {
                 //error
                 $scope.items = [];
             });
-        };
+        };*/
 
         $scope.filterBySubstring = function (searchString) {
-            //TODO filter $scope.items
+            filterByString = searchString;
+
+            $scope.items = _.filter($scope.items, function (item) {
+                return _.includes(item.name, searchString);
+            });
         };
 
         $scope.searchByCarType = function (carType) {
@@ -51,7 +56,10 @@
             _.forIn(searchResultsMap, function (value) {
                 concatedResult = _.concat(concatedResult, value);
             });
-            $scope.items = _.uniqBy(concatedResult, 'guid');
+
+            concatedResult = _.uniqBy(concatedResult, 'guid');
+            //TODO process filterByString  here if there is need
+            $scope.items = concatedResult;
         }
     }
 })();
