@@ -8,7 +8,8 @@
                 restrict: 'E',
                 scope: {
                     searchFn: '&',
-                    searchByCarType: '&'
+                    searchByCarType: '&',
+                    deleteCarTagHandler: '&'
                 },
                 templateUrl: "directives/tpl/search-input-tpl.html",
                 link: function ($scope) {
@@ -31,6 +32,8 @@
                     $scope.tagCloseHandler = function (tag) {
                         var index = $scope.tagsArray.indexOf(tag);
                         $scope.tagsArray.splice(index, 1);
+
+                        $scope.deleteCarTagHandler({carType: tag});
                     };
 
                     $scope.search = function () {

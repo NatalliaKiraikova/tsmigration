@@ -35,12 +35,23 @@
 
             DatabaseService.getDatabaseItemsByCarType(carType).then(function (res) {
                 searchResultsMap[carType] = res.data;
-                var concatedResult = [];
-                _.forIn(searchResultsMap, function (value) {
-                    concatedResult = _.concat(concatedResult, value);
-                });
-                $scope.items = _.uniqBy(concatedResult, 'guid');
+                updateTableItems();
             });
+        };
+
+        $scope.deleteCarTag = function (carType) {
+            if (searchResultsMap[carType]) {
+                delete searchResultsMap[carType];
+            }
+            updateTableItems();
+        };
+
+        function updateTableItems() {
+            var concatedResult = [];
+            _.forIn(searchResultsMap, function (value) {
+                concatedResult = _.concat(concatedResult, value);
+            });
+            $scope.items = _.uniqBy(concatedResult, 'guid');
         }
     }
 })();
