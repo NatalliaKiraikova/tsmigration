@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .service('DatabaseService', function ($http) {
-
+        .service('DatabaseService', function ($http, $q) {
+            var self = this;
             var generalURL = 'http://localhost:3000/database';
 
-            this.getAllDatabaseItems = function () {
+            self.getAllDatabaseItems = function () {
                 var req = {
                     method: 'GET',
                     url: generalURL
@@ -16,7 +16,7 @@
             };
 
 
-            this.getDatabaseItemsBySubstring = function (searchString) {
+            self.getDatabaseItemsBySubstring = function (searchString) {
                 var req = {
                     method: 'GET',
                     url: generalURL + '/items-by-substring',
@@ -27,7 +27,7 @@
                 return $http(req);
             };
 
-            this.getDatabaseItemsByCarType = function (carType) {
+            self.getDatabaseItemsByCarType = function (carType) {
                 var req = {
                     method: 'GET',
                     url: generalURL + '/items-by-car-type',
@@ -37,6 +37,24 @@
                 };
                 return $http(req);
             };
+
+            self.searchByTags = function (tagsArray, searchResultsMap) {
+
+                var promises = [];
+
+                angular.forEach(tagsArray, function (carType) {
+
+                    var promise = self.getDatabaseItemsByCarType(carType).then(function (res) {
+                        //console.log(res, 'carType', carType);
+                        searchResultsMap[carType] = res.data;
+                    });
+
+                    promises.push(promise);
+
+                });
+
+                return $q.all(promises);
+            }
 
         });
 
