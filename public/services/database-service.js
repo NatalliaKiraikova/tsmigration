@@ -52,7 +52,7 @@
                 });
 
                 return $q.all(promises);
-            }
+            };
 
         });
 
