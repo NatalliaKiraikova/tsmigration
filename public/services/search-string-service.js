@@ -3,10 +3,17 @@
 
     angular
         .module('app')
-        .factory('SearchStringService', function () {
+        .factory('SearchStringAndTagsModel', function () {
             return {
                 searchString: '',
-                selectedSuggestion: ''
+                selectedSuggestion: '',
+                tagsArray: [],
+
+                clearAll: function () {
+                    this.searchString = "";
+                    this.tagsArray = [];
+                    this.selectedSuggestion = "";
+                }
             };
         });
 })();

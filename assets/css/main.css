@@ -10,6 +10,12 @@ thead, caption {
 caption {
   font-size: 1.3em; }
 
+.search-text-input {
+  border-style: none; }
+
+.input-group {
+  border: 1px solid #d1d1d1; }
+
 html {
   height: 90%; }
 

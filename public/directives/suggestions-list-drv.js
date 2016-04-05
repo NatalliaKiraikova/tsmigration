@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .directive('suggestionsList', function ($compile, SuggestionsService, SearchStringService) {
+        .directive('suggestionsList', function ($compile, SuggestionsService, SearchStringAndTagsModel) {
             return {
                 restrict: 'E',
                 scope: {},
@@ -19,7 +19,7 @@
                             var templateAdded;
 
                             scope.$watch(function () {
-                                return SearchStringService.searchString;
+                                return SearchStringAndTagsModel.searchString;
                             }, function (newValue) {
                                 if (newValue && newValue.length > 2) {
                                     if (!templateAdded) {
@@ -42,8 +42,12 @@
                             });
 
                             scope.listClick = function (item) {
-                                SearchStringService.searchString = item.value;
-                                SearchStringService.selectedSuggestion = item;
+                                SearchStringAndTagsModel.searchString = item.value;
+                                SearchStringAndTagsModel.selectedSuggestion = item;
+
+                                if (item.type == 'car') {
+                                    SearchStringAndTagsModel.tagsArray.push(item.value);
+                                }
                             };
                         }
                     };

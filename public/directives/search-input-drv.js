@@ -3,41 +3,26 @@
 
     angular
         .module('app')
-        .directive('searchInput', function ($compile, $timeout, $window, SearchStringService) {
+        .directive('searchInput', function ($compile, $timeout, $window, SearchStringAndTagsModel) {
             return {
                 restrict: 'E',
                 scope: {
-                    searchFn: '&',
-                    searchByCarType: '&',
-                    deleteCarTagHandler: '&'
+                    searchFn: '&'
                 },
                 templateUrl: "directives/tpl/search-input-tpl.html",
                 link: function ($scope) {
-                    $scope.srv = SearchStringService;
-
-                    $scope.tagsArray = [];
-
-                    $scope.$watch(function () {
-                        return SearchStringService.selectedSuggestion;
-                    }, function (newValue) {
-                        if (newValue && newValue.value && newValue.value.length) {
-                            var searchValue = newValue.value;
-                            $scope.tagsArray.push(searchValue);
-                            if (newValue.type == 'car') {
-                                $scope.searchByCarType({carType: searchValue});
-                            }
-                        }
-                    });
+                    $scope.srv = SearchStringAndTagsModel;
 
                     $scope.tagCloseHandler = function (tag) {
-                        var index = $scope.tagsArray.indexOf(tag);
-                        $scope.tagsArray.splice(index, 1);
-
-                        $scope.deleteCarTagHandler({carType: tag});
+                        var index = SearchStringAndTagsModel.tagsArray.indexOf(tag);
+                        SearchStringAndTagsModel.tagsArray.splice(index, 1);
                     };
 
                     $scope.search = function () {
-                        $scope.searchFn({searchStr: $scope.srv.searchString});
+                        $scope.searchFn({
+                            tagsArray: SearchStringAndTagsModel.tagsArray,
+                            searchString: SearchStringAndTagsModel.searchString
+                        });
                     };
 
                 }
