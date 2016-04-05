@@ -27,3 +27,6 @@ body {
 
 .bordered-div {
   border: 5px solid #00b3ee; }
+
+.highlightedText {
+  background: #66f8ff; }

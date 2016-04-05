@@ -6,7 +6,7 @@
         .directive('suggestionItem', function () {
             return {
                 restrict: 'E',
-                template: "<span ng-class='getClass(suggestion)'></span>  {{suggestion.value}}",
+                template: "<span ng-class='getClass(suggestion)'></span><span ng-bind-html='suggestion.value | highlight:searchString'></span> ",
                 scope: {
                     suggestion: '='
                 },
@@ -14,7 +14,7 @@
             };
 
             /** @ngInject */
-            function SuggestionsListDirectiveController($scope) {
+            function SuggestionsListDirectiveController($scope, SearchStringAndTagsModel) {
                 var iconMap = {
                     user: 'user',
                     car: 'heart',
@@ -24,12 +24,14 @@
                     honda: 'plane'
                 };
 
+                $scope.searchString = SearchStringAndTagsModel.searchString;
+
                 $scope.getClass = function (suggestion) {
                     var classString = 'glyphicon glyphicon-';
 
-                    if(suggestion.type == 'car'){
+                    if (suggestion.type == 'car') {
                         classString += iconMap[suggestion.value];
-                    }else{
+                    } else {
                         classString += iconMap[suggestion.type];
                     }
 
