@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-10">
-            <search-input search-fn="filterBySearchStringAndTags(tagsArray, searchString)">
+            <search-input search-fn="model.filterBySearchStringAndTags(tagsArray, searchString)">
             </search-input>
             <suggestions-list></suggestions-list>
-            <simple-table items="items"></simple-table>
+            <simple-table items="model.items"></simple-table>
         </div>
     </div>
 </div>
