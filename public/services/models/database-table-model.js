@@ -8,13 +8,13 @@
 
                 items: [],
                 filterBySearchStringAndTags: function (tagsArray, searchString) {
-                    var searchResultsMap = {};
+
                     var self = this;
-                    DatabaseService.searchByTags(tagsArray, searchResultsMap).then(function (res) {
-                        //TODO return searchResultsMap
-                        var concatedResult = [];
-                        _.forIn(searchResultsMap, function (value) {
-                            concatedResult = _.concat(concatedResult, value);
+                    DatabaseService.searchByTags(tagsArray).then(function (data) {
+                        var concatedResult = [], searchResultsMap = {};
+                        _(data).forEach(function (resObject) {
+                            searchResultsMap[resObject.key] = resObject.value;
+                            concatedResult = _.concat(concatedResult, resObject.value);
                         });
 
                         concatedResult = _.uniqBy(concatedResult, 'guid');

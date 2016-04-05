@@ -38,15 +38,13 @@
                 return $http(req);
             };
 
-            self.searchByTags = function (tagsArray, searchResultsMap) {
+            self.searchByTags = function (tagsArray) {
 
                 var promises = [];
 
                 angular.forEach(tagsArray, function (carType) {
-
                     var promise = self.getDatabaseItemsByCarType(carType).then(function (res) {
-                        //console.log(res, 'carType', carType);
-                        searchResultsMap[carType] = res.data;
+                        return {key: carType, value: res.data};
                     });
 
                     promises.push(promise);
