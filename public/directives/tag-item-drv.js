@@ -6,25 +6,27 @@
         .directive('tagItem', function () {
             return {
                 restrict: 'E',
-                scope: {
+                scope: true,
+                bindToController: {
                     label: '=',
                     itemClickHandler: "&",
                     closeItemHandler: "&"
                 },
                 replace: true,
-                template: "<span class='input-group-addon' ng-click='onItemClick()'>{{label}}  <span class='glyphicon glyphicon-remove-circle' ng-click='onCloseClick($event)'></span></span>",
-                controller: TagItemController
+                template: "<span class='input-group-addon' ng-click='onItemClick()'>{{ctrl.label}}  <span class='glyphicon glyphicon-remove-circle' ng-click='onCloseClick($event)'></span></span>",
+                controller: TagItemController,
+                controllerAs: ctrl
             };
         });
 
     /** @ngInject */
     function TagItemController($scope) {
-        $scope.onCloseClick = function ($event) {
+        this.onCloseClick = function ($event) {
             $scope.closeItemHandler({tag: $scope.label});
             $event.stopImmediatePropagation();
         };
 
-        $scope.onItemClick = function () {
+        this.onItemClick = function () {
             //$scope.itemClickHandler({tag: $scope.label});
         };
     }
