@@ -8,7 +8,10 @@
     "angular": "*",
     "angular-ui-router": "*",
     "jquery": "*",
-    "angular-ui-bootstrap": "*"
+    "angular-ui-bootstrap": "*",
+    "typescript": "*",
+    "typings": "*"
+
   },
   "engines": {
     "node": ">=0.10.0"
@@ -17,6 +20,7 @@
     "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.0",
     "gulp-sass": "^2.2.0",
+    "gulp-typescript": "^2.11.0",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0"
   }

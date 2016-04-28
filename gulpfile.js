@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
+var ts = require("gulp-typescript"),
+    tsconfigPath = "tsconfig.json";
 
 // define the default task and add the watch task to it
 gulp.task('default', ['watch']);
@@ -19,9 +21,16 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
+gulp.task("ts-scripts", function () {
+    gulp.src("public/**/*.ts")
+        .pipe(ts(ts.createProject(tsconfigPath)))
+        .pipe(gulp.dest("www/scripts"));
+});
+
 // configure which files to watch and what tasks to use on file changes
-gulp.task('watch', ['jshint', 'build-css'], function () {
+gulp.task('watch', ['jshint', 'build-css', 'ts-scripts'], function () {
     gulp.watch(['public/**/*.js', 'parser/**/*.js'], ['jshint']);
     gulp.watch('assets/partials/*.scss', ['build-css']);
+    gulp.watch('public/**/*.js', ['ts-scripts']);
 });
 
