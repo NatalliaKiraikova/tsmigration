@@ -22,15 +22,16 @@ gulp.task('jshint', function () {
 });
 
 gulp.task("ts-scripts", function () {
-    gulp.src("public/**/*.ts")
-        .pipe(ts(ts.createProject(tsconfigPath)))
-        .pipe(gulp.dest("www/scripts"));
+    var tsProject = ts.createProject(tsconfigPath);
+    tsResult = tsProject.src() // instead of gulp.src(...)
+        .pipe(ts(tsProject));
+    return tsResult.js.pipe(gulp.dest('public/release'));
 });
 
 // configure which files to watch and what tasks to use on file changes
 gulp.task('watch', ['jshint', 'build-css', 'ts-scripts'], function () {
     gulp.watch(['public/**/*.js', 'parser/**/*.js'], ['jshint']);
     gulp.watch('assets/partials/*.scss', ['build-css']);
-    gulp.watch('public/**/*.js', ['ts-scripts']);
+    gulp.watch('public/*.ts', ['ts-scripts']);
 });
 

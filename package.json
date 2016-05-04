@@ -10,7 +10,8 @@
     "jquery": "*",
     "angular-ui-bootstrap": "*",
     "typescript": "*",
-    "typings": "*"
+    "typings": "*",
+    "tsd": "*"
 
   },
   "engines": {
