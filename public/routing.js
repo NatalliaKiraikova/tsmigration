@@ -22,7 +22,7 @@
                 }
             },
             pageTitle: 'Violations Page'
-        })/*.state('database', {
+        });/*.state('database', {
                 parent: 'home',
                 url: '/database',
                 templateUrl: 'tpl/database-table-view.html',
@@ -61,11 +61,7 @@
                     });
                 }
             }
-        })*/.state('test-ts', {
-            templateUrl: 'greeter.html',
-            url: '/test-ts'
-
-        });
+        });*/
 
     }
 })();

@@ -1,8 +1,10 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es5"
+        "target": "es5",
+        "outFile": "output.js"
     },
+    "compileOnSave": true,
     "exclude": [
         "node_modules"
     ]

@@ -32,6 +32,6 @@ gulp.task("ts-scripts", function () {
 gulp.task('watch', ['jshint', 'build-css', 'ts-scripts'], function () {
     gulp.watch(['public/**/*.js', 'parser/**/*.js'], ['jshint']);
     gulp.watch('assets/partials/*.scss', ['build-css']);
-    gulp.watch('public/*.ts', ['ts-scripts']);
+    gulp.watch(['public/*.ts', 'public/**/*.ts' ], ['ts-scripts']);
 });
 
